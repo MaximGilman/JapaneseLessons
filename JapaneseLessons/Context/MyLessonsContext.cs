@@ -5,7 +5,7 @@ namespace JapaneseLessons.Context
 {
     public class MyLessonsContext :DbContext
     {
-        protected MyLessonsContext()
+        public MyLessonsContext()
         {
             Database.EnsureCreated();
         }

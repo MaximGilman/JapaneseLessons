@@ -11,4 +11,10 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="MainForm - Копировать.resx">
+      <DependentUpon>MainForm.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
