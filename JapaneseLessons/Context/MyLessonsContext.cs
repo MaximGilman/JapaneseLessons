@@ -11,11 +11,16 @@ namespace JapaneseLessons.Context
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("");
+            optionsBuilder.UseNpgsql();
         }
         public DbSet<Word> Words { get; set; }
         public DbSet<Try> Tries { get; set; }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<DefaultUser> DefaultUser { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<DefaultUser>().HasKey(x=>x.UserKey);
+        }
     }
 }

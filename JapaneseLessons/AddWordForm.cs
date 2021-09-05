@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using JapaneseLessons.Context;
@@ -13,26 +12,26 @@ namespace JapaneseLessons
 {
     public partial class AddWordForm : Form
     {
-        public delegate void UserSelected(User selectedUser);
-        public event UserSelected UserWasSelected;
-        public AddWordForm(IEnumerable<User> users, User tempUser)
-        {
-            InitializeComponent();
-           
-            usersComboBox.DataSource = users;
-            usersComboBox.DisplayMember = "Name";
-            usersComboBox.ValueMember = "Id";
+        private readonly MyLessonsContext _ctx;
 
-            if (tempUser != null)
-            {
-                usersComboBox.SelectedItem = tempUser;
-            }
-        }
-        // Сделать generic комбобокс
-        private void applyUserButton_Click(object sender, EventArgs e)
+        public AddWordForm(MyLessonsContext ctx)
         {
-            var selectedUser = usersComboBox.SelectedItem as User;
-            UserWasSelected?.Invoke(selectedUser);
+            _ctx = ctx;
+            InitializeComponent();
+        }
+
+        private void addWordBtn_Click(object sender, EventArgs e)
+        {
+            var word = new Word()
+            {
+                Text = textWordTextBox.Text,
+                Meaning = meaningTextBox.Text,
+                PronounceJapanese = byLetterWritingTextBox.Text,
+                PronounceRussian = pronounceTextBox.Text
+            };
+            _ctx.Words.Add(word);
+            _ctx.SaveChanges();
+            Close();
         }
     }
 }
