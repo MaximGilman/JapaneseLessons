@@ -10,11 +10,11 @@ using JapaneseLessons.Models;
 
 namespace JapaneseLessons
 {
-    public partial class AddWordForm : Form
+    public partial class AddNewWordForm : Form
     {
         private readonly MyLessonsContext _ctx;
 
-        public AddWordForm(MyLessonsContext ctx)
+        public AddNewWordForm(MyLessonsContext ctx)
         {
             _ctx = ctx;
             InitializeComponent();

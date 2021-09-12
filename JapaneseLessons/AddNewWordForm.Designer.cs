@@ -1,7 +1,7 @@
 ﻿
 namespace JapaneseLessons
 {
-    partial class AddWordForm
+    partial class AddNewWordForm
     {
         /// <summary>
         /// Required designer variable.
@@ -147,4 +147,5 @@ namespace JapaneseLessons
         private System.Windows.Forms.TextBox pronounceTextBox;
         private System.Windows.Forms.Button addWordBtn;
     }
+
 }
