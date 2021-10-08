@@ -1,5 +1,8 @@
 ﻿using JapaneseLessons.Models;
 using Microsoft.EntityFrameworkCore;
+using Try = JapaneseLessons.Models.Try;
+using User = JapaneseLessons.Models.User;
+using Word = JapaneseLessons.Models.Word;
 
 namespace JapaneseLessons.Context
 {
