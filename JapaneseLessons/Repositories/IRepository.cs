@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace JapaneseLessonsLibrary.Repositories
+namespace JapaneseLessons.Repositories
 {
     public interface IRepository<T>
     {

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using JapaneseLessons.Context;
+﻿using JapaneseLessons.Context;
 using JapaneseLessons.Models;
 using JapaneseLessons.Services;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace JapaneseLessons
 {
@@ -39,8 +32,11 @@ namespace JapaneseLessons
         {
             _wordProducer = null;
             using MyLessonsContext ctx = new MyLessonsContext();
+            _currentRun.PercentOfSuccess = _currentRun.SuccessCount / _currentRun.WordsCount;
             ctx.Tries.Add(_currentRun);
             ctx.SaveChanges();
+            mainScreenPanel.Visible = false;
+
             MessageBox.Show($"Завершено! Результат: {_currentRun.SuccessCount}/{_currentRun.WordsCount}");
             _currentRun = null;
             _currentWord = null;
@@ -52,7 +48,7 @@ namespace JapaneseLessons
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using MyLessonsContext ctx = new MyLessonsContext();
-            var addForm = new SelectCurrentUserForm(ctx, _currentUser);
+            var addForm = new SelectCurrentUserForm(_currentUser);
             addForm.UserWasSelected += UserWasSelected;
             addForm.ShowDialog();
         }
@@ -66,7 +62,7 @@ namespace JapaneseLessons
         private void addWordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using MyLessonsContext ctx = new MyLessonsContext();
-            var addForm = new AddNewWordForm(ctx);
+            var addForm = new AddNewWordForm();
             addForm.ShowDialog();
         }
 
@@ -83,6 +79,7 @@ namespace JapaneseLessons
 
             _currentRun = new Try();
             _wordProducer.SetupWords(ctx);
+            SwapButtonsEnable();
             PlayWithTheWord();
 
         }
@@ -90,7 +87,8 @@ namespace JapaneseLessons
         private void PlayWithTheWord()
         {
             _currentWord = _wordProducer.GetNextWord();
-            wordTextRichTextBox.Text = _currentWord?.Text;
+            if (_currentWord != null)
+                wordTextRichTextBox.Text = _currentWord?.Text;
 
             // очистка со старого
             translateLabel.Text = string.Empty;
@@ -109,14 +107,12 @@ namespace JapaneseLessons
 
         private void wrongButton_Click(object sender, EventArgs e)
         {
-            SwapButtonsEnable();
             _currentRun.ErrorCount++;
             AppendWord();
         }
 
         private void correctButton_Click(object sender, EventArgs e)
         {
-            SwapButtonsEnable();
             _currentRun.SuccessCount++;
             AppendWord();
         }
@@ -124,7 +120,6 @@ namespace JapaneseLessons
         private void AppendWord()
         {
             _currentRun.WordsCount++;
-            _currentRun.LearnedWords.Add(_currentWord);
             SwapButtonsEnable();
             PlayWithTheWord();
         }

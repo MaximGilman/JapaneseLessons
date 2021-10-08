@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms.VisualStyles;
-
+﻿
 namespace JapaneseLessons.Models
 {
     public class Word
@@ -10,7 +8,5 @@ namespace JapaneseLessons.Models
         public string Meaning { get; set; }
         public string PronounceRussian { get; set; }
         public string PronounceJapanese { get; set; }
-        public List<Try> ExistedTries { get; set; }
-
     }
 }

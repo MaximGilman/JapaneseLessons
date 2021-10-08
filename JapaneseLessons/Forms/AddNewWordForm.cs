@@ -12,16 +12,16 @@ namespace JapaneseLessons
 {
     public partial class AddNewWordForm : Form
     {
-        private readonly MyLessonsContext _ctx;
 
-        public AddNewWordForm(MyLessonsContext ctx)
+        public AddNewWordForm()
         {
-            _ctx = ctx;
             InitializeComponent();
         }
 
         private void addWordBtn_Click(object sender, EventArgs e)
         {
+            using var ctx = new MyLessonsContext();
+
             var word = new Word()
             {
                 Text = textWordTextBox.Text,
@@ -29,8 +29,8 @@ namespace JapaneseLessons
                 PronounceJapanese = byLetterWritingTextBox.Text,
                 PronounceRussian = pronounceTextBox.Text
             };
-            _ctx.Words.Add(word);
-            _ctx.SaveChanges();
+            ctx.Words.Add(word);
+            ctx.SaveChanges();
             Close();
         }
     }

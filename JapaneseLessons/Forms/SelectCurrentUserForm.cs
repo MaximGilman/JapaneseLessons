@@ -14,14 +14,13 @@ namespace JapaneseLessons
 {
     public partial class SelectCurrentUserForm : Form
     {
-        private readonly MyLessonsContext _ctx;
 
         public delegate void UserSelected(User selectedUser);
         public event UserSelected UserWasSelected;
-        public SelectCurrentUserForm(MyLessonsContext ctx, User tempUser)
+        public SelectCurrentUserForm(User tempUser)
         {
-            _ctx = ctx;
             InitializeComponent();
+            using var ctx = new MyLessonsContext();
             IEnumerable<User> users = ctx.Users.ToList();
             if (!users.Any()) selectUserBtn.Enabled = false;
             usersComboBox.DataSource = users;
@@ -39,16 +38,17 @@ namespace JapaneseLessons
             if (usersComboBox.SelectedItem is User selectedUser)
             {
                 UserWasSelected?.Invoke(selectedUser);
+                using var ctx = new MyLessonsContext();
 
                 // Если установлен пользователь по умолчанию - выставляем его в бд
                 if (setUserDefaultCheckBox.CheckState == CheckState.Checked)
                 {
-                    foreach (var entity in _ctx.DefaultUser)
-                        _ctx.DefaultUser.Remove(entity);
+                    foreach (var entity in ctx.DefaultUser)
+                        ctx.DefaultUser.Remove(entity);
 
                     DefaultUser defaultUser = new DefaultUser() {UserKey = selectedUser.Id};
-                    _ctx.DefaultUser.Add(defaultUser);
-                    _ctx.SaveChanges();
+                    ctx.DefaultUser.Add(defaultUser);
+                    ctx.SaveChanges();
                 }
                 
                 this.Close();
@@ -61,7 +61,7 @@ namespace JapaneseLessons
 
         private void добавитьНовогоПользователяToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            throw new NotImplementedException();
         }
     }
 }
