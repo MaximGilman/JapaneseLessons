@@ -1,5 +1,5 @@
 ﻿
-namespace JapaneseLessons
+namespace JapaneseLessons.Forms
 {
     partial class MainForm
     {
@@ -101,9 +101,9 @@ namespace JapaneseLessons
             this.currentUserTitle.AutoSize = true;
             this.currentUserTitle.Location = new System.Drawing.Point(580, 9);
             this.currentUserTitle.Name = "currentUserTitle";
-            this.currentUserTitle.Size = new System.Drawing.Size(137, 15);
+            this.currentUserTitle.Size = new System.Drawing.Size(75, 15);
             this.currentUserTitle.TabIndex = 3;
-            this.currentUserTitle.Text = "Текущий пользователь:";
+            this.currentUserTitle.Text = "Current user:";
             // 
             // currentUserValue
             // 
@@ -160,27 +160,27 @@ namespace JapaneseLessons
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(371, 90);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 15);
+            this.label3.Size = new System.Drawing.Size(41, 15);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Азбука:";
+            this.label3.Text = "Ka-na:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(371, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 15);
+            this.label2.Size = new System.Drawing.Size(68, 15);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Произношение:";
+            this.label2.Text = "Pronounce:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(371, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
+            this.label1.Size = new System.Drawing.Size(56, 15);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Перевод:";
+            this.label1.Text = "Translate:";
             // 
             // correctButton
             // 
@@ -188,7 +188,7 @@ namespace JapaneseLessons
             this.correctButton.Name = "correctButton";
             this.correctButton.Size = new System.Drawing.Size(136, 31);
             this.correctButton.TabIndex = 3;
-            this.correctButton.Text = "Верно";
+            this.correctButton.Text = "Correct";
             this.correctButton.UseVisualStyleBackColor = true;
             this.correctButton.Click += new System.EventHandler(this.correctButton_Click);
             // 
@@ -198,7 +198,7 @@ namespace JapaneseLessons
             this.wrongButton.Name = "wrongButton";
             this.wrongButton.Size = new System.Drawing.Size(136, 31);
             this.wrongButton.TabIndex = 2;
-            this.wrongButton.Text = "Не верно";
+            this.wrongButton.Text = "Wrong";
             this.wrongButton.UseVisualStyleBackColor = true;
             this.wrongButton.Click += new System.EventHandler(this.wrongButton_Click);
             // 
@@ -209,7 +209,7 @@ namespace JapaneseLessons
             this.showButton.Name = "showButton";
             this.showButton.Size = new System.Drawing.Size(146, 54);
             this.showButton.TabIndex = 1;
-            this.showButton.Text = "Показать";
+            this.showButton.Text = "Show";
             this.showButton.UseVisualStyleBackColor = true;
             this.showButton.Click += new System.EventHandler(this.moveButton_Click);
             // 
@@ -234,7 +234,7 @@ namespace JapaneseLessons
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Уроки японского";
+            this.Text = "Japanese Lessons";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.mainScreenPanel.ResumeLayout(false);

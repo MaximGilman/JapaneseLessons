@@ -1,5 +1,5 @@
 ﻿
-namespace JapaneseLessons
+namespace JapaneseLessons.Forms
 {
     partial class AddNewWordForm
     {
@@ -52,18 +52,18 @@ namespace JapaneseLessons
             this.textLabel.AutoSize = true;
             this.textLabel.Location = new System.Drawing.Point(93, 42);
             this.textLabel.Name = "textLabel";
-            this.textLabel.Size = new System.Drawing.Size(74, 15);
+            this.textLabel.Size = new System.Drawing.Size(63, 15);
             this.textLabel.TabIndex = 1;
-            this.textLabel.Text = "Текст слова:";
+            this.textLabel.Text = "Word Text:";
             // 
             // japanesePronounceLabel
             // 
             this.japanesePronounceLabel.AutoSize = true;
-            this.japanesePronounceLabel.Location = new System.Drawing.Point(52, 71);
+            this.japanesePronounceLabel.Location = new System.Drawing.Point(80, 71);
             this.japanesePronounceLabel.Name = "japanesePronounceLabel";
-            this.japanesePronounceLabel.Size = new System.Drawing.Size(118, 15);
+            this.japanesePronounceLabel.Size = new System.Drawing.Size(76, 15);
             this.japanesePronounceLabel.TabIndex = 3;
-            this.japanesePronounceLabel.Text = "Написание азбукой:";
+            this.japanesePronounceLabel.Text = "Ka-na letters:";
             // 
             // byLetterWritingTextBox
             // 
@@ -75,11 +75,11 @@ namespace JapaneseLessons
             // meaningLabel
             // 
             this.meaningLabel.AutoSize = true;
-            this.meaningLabel.Location = new System.Drawing.Point(104, 100);
+            this.meaningLabel.Location = new System.Drawing.Point(99, 100);
             this.meaningLabel.Name = "meaningLabel";
-            this.meaningLabel.Size = new System.Drawing.Size(63, 15);
+            this.meaningLabel.Size = new System.Drawing.Size(57, 15);
             this.meaningLabel.TabIndex = 5;
-            this.meaningLabel.Text = "Значение:";
+            this.meaningLabel.Text = "Meaning:";
             // 
             // meaningTextBox
             // 
@@ -91,11 +91,11 @@ namespace JapaneseLessons
             // pronounceRussianLabel
             // 
             this.pronounceRussianLabel.AutoSize = true;
-            this.pronounceRussianLabel.Location = new System.Drawing.Point(5, 129);
+            this.pronounceRussianLabel.Location = new System.Drawing.Point(88, 129);
             this.pronounceRussianLabel.Name = "pronounceRussianLabel";
-            this.pronounceRussianLabel.Size = new System.Drawing.Size(162, 15);
+            this.pronounceRussianLabel.Size = new System.Drawing.Size(68, 15);
             this.pronounceRussianLabel.TabIndex = 7;
-            this.pronounceRussianLabel.Text = "Произношение на русском:";
+            this.pronounceRussianLabel.Text = "Pronounce:";
             // 
             // pronounceTextBox
             // 
@@ -110,11 +110,11 @@ namespace JapaneseLessons
             this.addWordBtn.Name = "addWordBtn";
             this.addWordBtn.Size = new System.Drawing.Size(136, 23);
             this.addWordBtn.TabIndex = 8;
-            this.addWordBtn.Text = "Добавить";
+            this.addWordBtn.Text = "Add";
             this.addWordBtn.UseVisualStyleBackColor = true;
             this.addWordBtn.Click += new System.EventHandler(this.addWordBtn_Click);
             // 
-            // AddWordForm
+            // AddNewWordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,7 +128,7 @@ namespace JapaneseLessons
             this.Controls.Add(this.byLetterWritingTextBox);
             this.Controls.Add(this.textLabel);
             this.Controls.Add(this.textWordTextBox);
-            this.Name = "AddWordForm";
+            this.Name = "AddNewWordForm";
             this.Text = "AddWordForm";
             this.ResumeLayout(false);
             this.PerformLayout();

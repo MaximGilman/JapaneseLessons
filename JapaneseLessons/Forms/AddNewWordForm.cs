@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using JapaneseLessons.Context;
 using JapaneseLessons.Models;
+using JapaneseLessons.Repositories;
 
-namespace JapaneseLessons
+namespace JapaneseLessons.Forms
 {
     public partial class AddNewWordForm : Form
     {
+        private readonly IRepository<Word> _wordRepository;
 
-        public AddNewWordForm()
+        public AddNewWordForm(IRepository<Word> wordRepository)
         {
+            _wordRepository = wordRepository;
             InitializeComponent();
         }
 
-        private void addWordBtn_Click(object sender, EventArgs e)
+        private async void addWordBtn_Click(object sender, EventArgs e)
         {
-            using var ctx = new MyLessonsContext();
-
             var word = new Word()
             {
                 Text = textWordTextBox.Text,
@@ -29,8 +25,8 @@ namespace JapaneseLessons
                 PronounceJapanese = byLetterWritingTextBox.Text,
                 PronounceRussian = pronounceTextBox.Text
             };
-            ctx.Words.Add(word);
-            ctx.SaveChanges();
+            await _wordRepository.Add(word);
+           
             Close();
         }
     }
