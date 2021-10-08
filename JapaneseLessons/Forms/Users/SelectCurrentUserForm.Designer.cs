@@ -1,5 +1,5 @@
 ﻿
-namespace JapaneseLessons.Forms
+namespace JapaneseLessons.Forms.Users
 {
     partial class SelectCurrentUserForm
     {
@@ -32,7 +32,7 @@ namespace JapaneseLessons.Forms
             this.usersComboBox = new System.Windows.Forms.ComboBox();
             this.selectUserBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.добавитьНовогоПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewUserMenuStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.setUserDefaultCheckBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,19 +59,19 @@ namespace JapaneseLessons.Forms
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.добавитьНовогоПользователяToolStripMenuItem});
+            this.addNewUserMenuStrip});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(439, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // добавитьНовогоПользователяToolStripMenuItem
+            // addNewUserMenuStrip
             // 
-            this.добавитьНовогоПользователяToolStripMenuItem.Name = "добавитьНовогоПользователяToolStripMenuItem";
-            this.добавитьНовогоПользователяToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.добавитьНовогоПользователяToolStripMenuItem.Text = "Add new user";
-            this.добавитьНовогоПользователяToolStripMenuItem.Click += new System.EventHandler(this.добавитьНовогоПользователяToolStripMenuItem_Click);
+            this.addNewUserMenuStrip.Name = "addNewUserMenuStrip";
+            this.addNewUserMenuStrip.Size = new System.Drawing.Size(91, 20);
+            this.addNewUserMenuStrip.Text = "Add new user";
+            this.addNewUserMenuStrip.Click += new System.EventHandler(this.addNewUserMenuStrip_Click);
             // 
             // setUserDefaultCheckBox
             // 
@@ -107,7 +107,7 @@ namespace JapaneseLessons.Forms
         private System.Windows.Forms.ComboBox usersComboBox;
         private System.Windows.Forms.Button selectUserBtn;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem добавитьНовогоПользователяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewUserMenuStrip;
         private System.Windows.Forms.CheckBox setUserDefaultCheckBox;
     }
 }

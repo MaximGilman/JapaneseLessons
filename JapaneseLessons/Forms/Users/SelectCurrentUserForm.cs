@@ -1,13 +1,12 @@
-﻿using System;
+﻿using JapaneseLessons.Models;
+using JapaneseLessons.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using JapaneseLessons.Context;
-using JapaneseLessons.Models;
-using JapaneseLessons.Repositories;
 
-namespace JapaneseLessons.Forms
+namespace JapaneseLessons.Forms.Users
 {
     public partial class SelectCurrentUserForm : Form
     {
@@ -30,14 +29,15 @@ namespace JapaneseLessons.Forms
             _defaultUserRepository = defaultUserRepository;
             _userRepository = userRepository;
 
-            if (!users.Any()) selectUserBtn.Enabled = false;
-            usersComboBox.DataSource = users;
-            usersComboBox.DisplayMember = "Name";
+            SetUsersToDropdown(users);
+            
             if (tempUser != null)
             {
                 usersComboBox.SelectedItem = tempUser;
             }
         }
+
+        
 
         private async void selectUserBtn_Click(object sender, EventArgs e)
         {
@@ -60,13 +60,28 @@ namespace JapaneseLessons.Forms
             }
             else
             {
-                MessageBox.Show("No user provided");
+                MessageBox.Show(@"No user provided");
             }
         }
 
-        private void добавитьНовогоПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addNewUserMenuStrip_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var createUserForm = new CreateUserForm(_userRepository);
+            createUserForm.UserWasAdded += UpdateUserList;
+            createUserForm.ShowDialog();
+        }
+
+        private async void UpdateUserList()
+        {
+            var users = await _userRepository.Get();
+            SetUsersToDropdown(users);
+        }
+
+        private void SetUsersToDropdown(IEnumerable<User> users)
+        {
+            if (!users.Any()) selectUserBtn.Enabled = false;
+            usersComboBox.DataSource = users;
+            usersComboBox.DisplayMember = "Name";
         }
     }
 }
