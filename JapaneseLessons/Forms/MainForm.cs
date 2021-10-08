@@ -1,11 +1,11 @@
-﻿using JapaneseLessons.Context;
-using JapaneseLessons.Models;
-using JapaneseLessons.Services;
-using System;
-using System.Linq;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using JapaneseLessons.Models;
+using JapaneseLessons.Repositories;
+using JapaneseLessons.Services;
 
-namespace JapaneseLessons
+namespace JapaneseLessons.Forms
 {
     public partial class MainForm : Form
     {
@@ -14,41 +14,53 @@ namespace JapaneseLessons
         private Word _currentWord;
 
         private WordProducer _wordProducer;
-        public MainForm()
+
+        private readonly IRepository<Word> _wordRepository = new Repository<Word>();
+        private readonly IRepository<Try> _tryRepository = new Repository<Try>();
+        private readonly IRepository<User> _userRepository = new Repository<User>();
+        private readonly IRepository<DefaultUser> _defaultRepository = new Repository<DefaultUser>();
+
+        public static async Task<MainForm> CreateFormAsync()
         {
-            InitializeComponent();
-            using MyLessonsContext ctx = new MyLessonsContext();
-            if (ctx.DefaultUser.FirstOrDefault() is { } defaultUser)
+            var defaultUserRepository = new Repository<DefaultUser>();
+            var userRepository = new Repository<User>();
+            User defaultUserData = null;
+            if (await defaultUserRepository.GetFirstOrDefault() is { } defaultUser)
             {
-                var user = ctx.Users.First(x => x.Id == defaultUser.UserKey);
-                UserWasSelected(user);
+                defaultUserData = await userRepository.GetFirstOrDefault(x => x.Id == defaultUser.UserKey);
             }
 
-            _wordProducer = new WordProducer();
+            return new MainForm(defaultUserData);
+        }
+
+        private MainForm(User defaultUser)
+        {
+            InitializeComponent();
+
+            UserWasSelected(defaultUser);
+
+             _wordProducer = new WordProducer(_wordRepository);
             _wordProducer.AllWordsWerePassed += WordProducerOnAllWordsWerePassed;
         }
 
         private void WordProducerOnAllWordsWerePassed()
         {
             _wordProducer = null;
-            using MyLessonsContext ctx = new MyLessonsContext();
             _currentRun.PercentOfSuccess = _currentRun.SuccessCount / _currentRun.WordsCount;
-            ctx.Tries.Add(_currentRun);
-            ctx.SaveChanges();
+            _tryRepository.Add(_currentRun);
             mainScreenPanel.Visible = false;
 
-            MessageBox.Show($"Завершено! Результат: {_currentRun.SuccessCount}/{_currentRun.WordsCount}");
+            MessageBox.Show($@"Run finished! Result: {_currentRun.SuccessCount}/{_currentRun.WordsCount}");
             _currentRun = null;
             _currentWord = null;
         }
 
         /// <summary>
-        /// Выбор пользователя
+        /// User selection
         /// </summary>
-        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using MyLessonsContext ctx = new MyLessonsContext();
-            var addForm = new SelectCurrentUserForm(_currentUser);
+            var addForm = await SelectCurrentUserForm.CreateForm(_userRepository, _defaultRepository, _currentUser);
             addForm.UserWasSelected += UserWasSelected;
             addForm.ShowDialog();
         }
@@ -61,12 +73,11 @@ namespace JapaneseLessons
 
         private void addWordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using MyLessonsContext ctx = new MyLessonsContext();
-            var addForm = new AddNewWordForm();
+            var addForm = new AddNewWordForm(_wordRepository);
             addForm.ShowDialog();
         }
 
-        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Отобразить форму
             // Создать ран
@@ -75,10 +86,9 @@ namespace JapaneseLessons
             // Если слово угадано - записать его в успешные, иначе в ошибки
 
             mainScreenPanel.Visible = true;
-            using MyLessonsContext ctx = new MyLessonsContext();
 
             _currentRun = new Try();
-            _wordProducer.SetupWords(ctx);
+            await _wordProducer.SetupWords();
             SwapButtonsEnable();
             PlayWithTheWord();
 
@@ -90,7 +100,7 @@ namespace JapaneseLessons
             if (_currentWord != null)
                 wordTextRichTextBox.Text = _currentWord?.Text;
 
-            // очистка со старого
+            // clear existed data
             translateLabel.Text = string.Empty;
             pronounceLabel.Text = string.Empty;
             AlphabetLabel.Text = string.Empty;
@@ -98,7 +108,7 @@ namespace JapaneseLessons
 
         private void SwapButtonsEnable()
         {
-            // Должно гореть либо дейсвтие "дальше", либо проверки
+            // There either should be able 'next' button or 'check'
             wrongButton.Enabled = showButton.Enabled;
             correctButton.Enabled = showButton.Enabled;
 

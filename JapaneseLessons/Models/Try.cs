@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms.VisualStyles;
-
-namespace JapaneseLessons.Models
+﻿namespace JapaneseLessons.Models
 {
     public class Try
     {

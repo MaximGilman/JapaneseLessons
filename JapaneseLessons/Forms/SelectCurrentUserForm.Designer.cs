@@ -1,5 +1,5 @@
 ﻿
-namespace JapaneseLessons
+namespace JapaneseLessons.Forms
 {
     partial class SelectCurrentUserForm
     {
@@ -52,7 +52,7 @@ namespace JapaneseLessons
             this.selectUserBtn.Name = "selectUserBtn";
             this.selectUserBtn.Size = new System.Drawing.Size(202, 23);
             this.selectUserBtn.TabIndex = 1;
-            this.selectUserBtn.Text = "Выбрать";
+            this.selectUserBtn.Text = "Confirm";
             this.selectUserBtn.UseVisualStyleBackColor = true;
             this.selectUserBtn.Click += new System.EventHandler(this.selectUserBtn_Click);
             // 
@@ -69,8 +69,8 @@ namespace JapaneseLessons
             // добавитьНовогоПользователяToolStripMenuItem
             // 
             this.добавитьНовогоПользователяToolStripMenuItem.Name = "добавитьНовогоПользователяToolStripMenuItem";
-            this.добавитьНовогоПользователяToolStripMenuItem.Size = new System.Drawing.Size(191, 20);
-            this.добавитьНовогоПользователяToolStripMenuItem.Text = "Добавить нового пользователя";
+            this.добавитьНовогоПользователяToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.добавитьНовогоПользователяToolStripMenuItem.Text = "Add new user";
             this.добавитьНовогоПользователяToolStripMenuItem.Click += new System.EventHandler(this.добавитьНовогоПользователяToolStripMenuItem_Click);
             // 
             // setUserDefaultCheckBox
@@ -78,9 +78,9 @@ namespace JapaneseLessons
             this.setUserDefaultCheckBox.AutoSize = true;
             this.setUserDefaultCheckBox.Location = new System.Drawing.Point(284, 53);
             this.setUserDefaultCheckBox.Name = "setUserDefaultCheckBox";
-            this.setUserDefaultCheckBox.Size = new System.Drawing.Size(143, 19);
+            this.setUserDefaultCheckBox.Size = new System.Drawing.Size(113, 19);
             this.setUserDefaultCheckBox.TabIndex = 3;
-            this.setUserDefaultCheckBox.Text = "Сохранить при входе";
+            this.setUserDefaultCheckBox.Text = "Save on the start";
             this.setUserDefaultCheckBox.UseVisualStyleBackColor = false;
             // 
             // SelectCurrentUserForm

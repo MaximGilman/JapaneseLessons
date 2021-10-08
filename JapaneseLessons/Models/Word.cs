@@ -1,5 +1,4 @@
-﻿
-namespace JapaneseLessons.Models
+﻿namespace JapaneseLessons.Models
 {
     public class Word
     {
