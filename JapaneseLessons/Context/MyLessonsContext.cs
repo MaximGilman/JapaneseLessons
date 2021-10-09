@@ -1,8 +1,6 @@
-﻿using JapaneseLessons.Models;
+﻿using System.Configuration;
+using JapaneseLessons.Models;
 using Microsoft.EntityFrameworkCore;
-using Try = JapaneseLessons.Models.Try;
-using User = JapaneseLessons.Models.User;
-using Word = JapaneseLessons.Models.Word;
 
 namespace JapaneseLessons.Context
 {
@@ -15,7 +13,7 @@ namespace JapaneseLessons.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // local host is not such sensitive data)
-            optionsBuilder.UseNpgsql();
+            optionsBuilder.UseNpgsql(ConfigurationManager.ConnectionStrings["local"].ConnectionString);
             
         }
         public DbSet<Word> Words { get; set; }

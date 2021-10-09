@@ -1,8 +1,8 @@
 using JapaneseLessons.Forms;
 using System;
+using System.Configuration;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace JapaneseLessons
 {
     static class Program
