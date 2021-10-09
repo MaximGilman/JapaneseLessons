@@ -40,7 +40,7 @@ namespace JapaneseLessons.Forms
 
             UserWasSelected(defaultUser);
 
-             _wordProducer = new WordProducer(_wordRepository);
+            _wordProducer = new WordProducer(_wordRepository);
             _wordProducer.AllWordsWerePassed += WordProducerOnAllWordsWerePassed;
         }
 
@@ -69,7 +69,8 @@ namespace JapaneseLessons.Forms
         private void UserWasSelected(User selectedUser)
         {
             _currentUser = selectedUser;
-            currentUserValue.Text = _currentUser.Name;
+            if (_currentUser != null)
+                currentUserValue.Text = _currentUser.Name;
         }
 
         private void addWordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -141,6 +142,12 @@ namespace JapaneseLessons.Forms
             pronounceLabel.Text = _currentWord.PronounceRussian;
             AlphabetLabel.Text = _currentWord.PronounceJapanese;
             SwapButtonsEnable();
+        }
+
+        private async void scoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var scoreForm = await ScoreForm.CreateForm(_tryRepository, _userRepository);
+            scoreForm.ShowDialog();
         }
     }
 }

@@ -24,6 +24,8 @@ namespace JapaneseLessons.Context
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<DefaultUser>().HasKey(x=>x.UserKey);
+            
+
         }
     }
 }

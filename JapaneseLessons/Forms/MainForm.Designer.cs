@@ -49,6 +49,7 @@ namespace JapaneseLessons.Forms
             this.wrongButton = new System.Windows.Forms.Button();
             this.showButton = new System.Windows.Forms.Button();
             this.wordTextRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.scoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.mainScreenPanel.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +69,8 @@ namespace JapaneseLessons.Forms
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.startToolStripMenuItem,
             this.addWordToolStripMenuItem,
-            this.userToolStripMenuItem});
+            this.userToolStripMenuItem,
+            this.scoreToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -223,6 +225,13 @@ namespace JapaneseLessons.Forms
             this.wordTextRichTextBox.TabIndex = 0;
             this.wordTextRichTextBox.Text = "";
             // 
+            // scoreToolStripMenuItem
+            // 
+            this.scoreToolStripMenuItem.Name = "scoreToolStripMenuItem";
+            this.scoreToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.scoreToolStripMenuItem.Text = "Score";
+            this.scoreToolStripMenuItem.Click += new System.EventHandler(this.scoreToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -265,6 +274,7 @@ namespace JapaneseLessons.Forms
         private System.Windows.Forms.Label AlphabetLabel;
         private System.Windows.Forms.Label pronounceLabel;
         private System.Windows.Forms.Label translateLabel;
+        private System.Windows.Forms.ToolStripMenuItem scoreToolStripMenuItem;
     }
 }
 
