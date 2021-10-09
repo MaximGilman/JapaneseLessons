@@ -15,7 +15,7 @@ namespace JapaneseLessons.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // local host is not such sensitive data)
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=japanese;Username=postgres;Password=password");
+            optionsBuilder.UseNpgsql();
             
         }
         public DbSet<Word> Words { get; set; }
