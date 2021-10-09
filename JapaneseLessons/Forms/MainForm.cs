@@ -142,5 +142,11 @@ namespace JapaneseLessons.Forms
             AlphabetLabel.Text = _currentWord.PronounceJapanese;
             SwapButtonsEnable();
         }
+
+        private async void scoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var scoreForm = await  ScoreForm.CreateForm(_tryRepository, _userRepository);
+            scoreForm.ShowDialog();
+        }
     }
 }
