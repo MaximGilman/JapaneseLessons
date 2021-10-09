@@ -10,7 +10,7 @@ namespace JapaneseLessons.Forms
     public partial class ScoreForm : Form
     {
         private readonly IRepository<Try> _tryRepository;
-        private BindingSource triesSource = new BindingSource();
+        private readonly BindingSource _triesSource = new BindingSource();
 
         public static async Task<ScoreForm> CreateForm(IRepository<Try> tryRepository, IRepository<User> userRepository)
         {
@@ -23,7 +23,7 @@ namespace JapaneseLessons.Forms
             InitializeComponent();
             
             triesDataGrid.AutoSize = true;
-            triesDataGrid.DataSource = triesSource;
+            triesDataGrid.DataSource = _triesSource;
             
             userComboBox.DataSource = users;
             userComboBox.DisplayMember = "Name";
@@ -31,7 +31,8 @@ namespace JapaneseLessons.Forms
 
         private async void userComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            triesSource.DataSource = await _tryRepository.Get();
+            var selectedUser = userComboBox.SelectedItem as User;
+            _triesSource.DataSource = await _tryRepository.Get(x=>x.User.Id == selectedUser.Id);
         }
     }
 }
