@@ -15,4 +15,9 @@
     <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Word\" />
+    <Folder Include="UseCases\Try\" />
+  </ItemGroup>
+
 </Project>

@@ -1,11 +1,11 @@
-﻿using JapaneseLibrary.Models;
-using JapaneseLibrary.Repositories;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JapaneseLibrary.Models;
+using JapaneseLibrary.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace JapaneseLessons.Forms.Users
 {
@@ -31,14 +31,14 @@ namespace JapaneseLessons.Forms.Users
             _userRepository = userRepository;
 
             SetUsersToDropdown(users);
-
+            
             if (tempUser != null)
             {
                 usersComboBox.SelectedItem = tempUser;
             }
         }
 
-
+        
 
         private async void selectUserBtn_Click(object sender, EventArgs e)
         {
