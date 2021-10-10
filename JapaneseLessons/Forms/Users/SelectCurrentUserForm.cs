@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace JapaneseLessons.Forms.Users
 {
@@ -66,7 +67,7 @@ namespace JapaneseLessons.Forms.Users
 
         private void addNewUserMenuStrip_Click(object sender, EventArgs e)
         {
-            var createUserForm = new CreateUserForm(_userRepository);
+            var createUserForm = Program.ServiceProvider.GetService<CreateUserForm>();
             createUserForm.UserWasAdded += UpdateUserList;
             createUserForm.ShowDialog();
         }

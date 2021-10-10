@@ -5,6 +5,7 @@ using JapaneseLessons.Forms.Users;
 using JapaneseLessons.Models;
 using JapaneseLessons.Repositories;
 using JapaneseLessons.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace JapaneseLessons.Forms
 {
@@ -16,15 +17,15 @@ namespace JapaneseLessons.Forms
 
         private WordProducer _wordProducer;
 
-        private readonly IRepository<Word> _wordRepository = new Repository<Word>();
-        private readonly IRepository<Try> _tryRepository = new Repository<Try>();
-        private readonly IRepository<User> _userRepository = new Repository<User>();
-        private readonly IRepository<DefaultUser> _defaultRepository = new Repository<DefaultUser>();
+        private readonly IRepository<Word> _wordRepository = Program.ServiceProvider.GetService<IRepository<Word>>();
+        private readonly IRepository<Try> _tryRepository = Program.ServiceProvider.GetService<IRepository<Try>>();
+        private readonly IRepository<User> _userRepository = Program.ServiceProvider.GetService<IRepository<User>>();
+        private readonly IRepository<DefaultUser> _defaultRepository = Program.ServiceProvider.GetService<IRepository<DefaultUser>>();
 
         public static async Task<MainForm> CreateFormAsync()
         {
-            var defaultUserRepository = new Repository<DefaultUser>();
-            var userRepository = new Repository<User>();
+            var defaultUserRepository =Program.ServiceProvider.GetService<IRepository<DefaultUser>>();
+            var userRepository = Program.ServiceProvider.GetService<IRepository<User>>();
             User defaultUserData = null;
             if (await defaultUserRepository.GetFirstOrDefault() is { } defaultUser)
             {
@@ -39,8 +40,7 @@ namespace JapaneseLessons.Forms
             InitializeComponent();
 
             UserWasSelected(defaultUser);
-
-            _wordProducer = new WordProducer(_wordRepository);
+            _wordProducer = Program.ServiceProvider.GetService<WordProducer>();
             _wordProducer.AllWordsWerePassed += WordProducerOnAllWordsWerePassed;
         }
 

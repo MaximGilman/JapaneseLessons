@@ -18,7 +18,7 @@ namespace JapaneseLessons.Services
             _wordRepository = wordRepository;
         }
 
-        private const int Size = 20;
+        private const int WordsAmount = 20;
         private List<Word> words;
         private int currentIndex;
         
@@ -26,7 +26,9 @@ namespace JapaneseLessons.Services
         {
             // ToDo: Create lazy load for partition
             var allWords = await _wordRepository.Get();
-            words = allWords.Take(Size).ToList();
+            if (!allWords.Any())
+                throw new KeyNotFoundException("No words found");
+            words = allWords.Take(WordsAmount).ToList();
         }
 
         public void Clear()
@@ -36,9 +38,10 @@ namespace JapaneseLessons.Services
 
         public Word GetNextWord()
         {
-            if (words == null || words.Count <= currentIndex || currentIndex >= Size)
+            if (words == null || words.Count <= currentIndex || currentIndex >= WordsAmount)
             {
                 AllWordsWerePassed?.Invoke();
+                Clear();
                 return null;
             }
             return words[currentIndex++];
