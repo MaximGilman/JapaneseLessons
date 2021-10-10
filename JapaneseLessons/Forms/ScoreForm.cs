@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using JapaneseLibrary.Models;
+using JapaneseLibrary.Repositories;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using JapaneseLessons.Models;
-using JapaneseLessons.Repositories;
 
 namespace JapaneseLessons.Forms
 {
@@ -21,10 +20,10 @@ namespace JapaneseLessons.Forms
         {
             _tryRepository = tryRepository;
             InitializeComponent();
-            
+
             triesDataGrid.AutoSize = true;
             triesDataGrid.DataSource = _triesSource;
-            
+
             userComboBox.DataSource = users;
             userComboBox.DisplayMember = "Name";
         }
@@ -32,7 +31,7 @@ namespace JapaneseLessons.Forms
         private async void userComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             var selectedUser = userComboBox.SelectedItem as User;
-            _triesSource.DataSource = await _tryRepository.Get(x=>x.User.Id == selectedUser.Id);
+            _triesSource.DataSource = await _tryRepository.Get(x => x.User.Id == selectedUser.Id);
         }
     }
 }

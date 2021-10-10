@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace JapaneseLessons.Models
+namespace JapaneseLibrary.Models
 {
     public class User
     {

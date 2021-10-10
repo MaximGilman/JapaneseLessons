@@ -1,30 +1,29 @@
 using JapaneseLessons.Forms;
-using JapaneseLessons.Models;
-using JapaneseLessons.Repositories;
-using JapaneseLessons.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JapaneseLessons.Forms.Users;
+using JapaneseLibrary;
+using Microsoft.Extensions.Configuration;
+using Utils.Extensions;
 
 namespace JapaneseLessons
 {
     static class Program
     {
+        public static IConfiguration Configuration;
         public static IServiceProvider ServiceProvider { get; set; }
         static void ConfigureServices()
         {
             var services = new ServiceCollection();
-            services.AddScoped<IRepository<Word>, Repository<Word>>();
-            services.AddScoped<IRepository<Try>, Repository<Try>>();
-            services.AddScoped<IRepository<DefaultUser>, Repository<DefaultUser>>();
-            services.AddScoped<IRepository<User>, Repository<User>>();
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            Configuration = builder.Build();
 
-            services.AddSingleton<WordProducer>();
+            services.RegisterModule<LibraryModule>(Configuration);
 
             services.AddSingleton<CreateUserForm>();
-
             ServiceProvider = services.BuildServiceProvider();
         }
 

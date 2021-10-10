@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JapaneseLessons.Forms.Users;
-using JapaneseLessons.Models;
-using JapaneseLessons.Repositories;
-using JapaneseLessons.Services;
+using JapaneseLibrary.Models;
+using JapaneseLibrary.Repositories;
+using JapaneseLibrary.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace JapaneseLessons.Forms

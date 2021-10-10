@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using JapaneseLessons.Models;
-using JapaneseLessons.Repositories;
+using JapaneseLibrary.Models;
+using JapaneseLibrary.Repositories;
 
 namespace JapaneseLessons.Forms.Users
 {
@@ -21,17 +21,17 @@ namespace JapaneseLessons.Forms.Users
         private async void createUserButton_Click(object sender, EventArgs e)
         {
             string userName = createdUserTexBox.Text;
-            if(string.IsNullOrEmpty(userName))
+            if (string.IsNullOrEmpty(userName))
                 Close();
-            
-            if (await _userRepository.GetFirstOrDefault(x => 
+
+            if (await _userRepository.GetFirstOrDefault(x =>
                 string.Equals(x.Name, userName/*, StringComparison.InvariantCultureIgnoreCase*/)
             ) is { })
             {
                 MessageBox.Show(@"User with the same name already exists");
             }
 
-            var newUser = new User() {Name = userName};
+            var newUser = new User() { Name = userName };
             await _userRepository.Add(newUser);
             UserWasAdded?.Invoke();
             Close();

@@ -1,4 +1,4 @@
-﻿namespace JapaneseLessons.Models
+﻿namespace JapaneseLibrary.Models
 {
     public class DefaultUser
     { 

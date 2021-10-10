@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using JapaneseLessons.Context;
-using JapaneseLessons.Models;
-using JapaneseLessons.Repositories;
+using JapaneseLibrary.Context;
+using JapaneseLibrary.Models;
+using JapaneseLibrary.Repositories;
 
 namespace JapaneseLessons.Forms
 {

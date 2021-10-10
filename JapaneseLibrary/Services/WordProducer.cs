@@ -1,10 +1,10 @@
-﻿using JapaneseLessons.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using JapaneseLessons.Repositories;
+using JapaneseLibrary.Models;
+using JapaneseLibrary.Repositories;
 
-namespace JapaneseLessons.Services
+namespace JapaneseLibrary.Services
 {
     public class WordProducer
     {
@@ -21,7 +21,7 @@ namespace JapaneseLessons.Services
         private const int WordsAmount = 20;
         private List<Word> words;
         private int currentIndex;
-        
+
         public async Task SetupWords()
         {
             // ToDo: Create lazy load for partition
