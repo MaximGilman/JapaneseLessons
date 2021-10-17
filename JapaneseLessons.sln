@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JapaneseLessons", "JapaneseLessons\JapaneseLessons.csproj", "{3B6EC63E-C1AD-4378-A04C-147AC9CC670F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseLibrary", "JapaneseLibrary\JapaneseLibrary.csproj", "{61B01D43-3011-4529-9FBF-585C74115B26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JapaneseLibrary", "JapaneseLibrary\JapaneseLibrary.csproj", "{61B01D43-3011-4529-9FBF-585C74115B26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{CC6DB6A6-778D-4C24-82F4-260A3689D68D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj", "{CC6DB6A6-778D-4C24-82F4-260A3689D68D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JapaneseLessons.Web", "JapaneseLessons.Web\JapaneseLessons.Web.csproj", "{5E6CB6FE-50E6-4C00-AF08-F387DD818C63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{CC6DB6A6-778D-4C24-82F4-260A3689D68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC6DB6A6-778D-4C24-82F4-260A3689D68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC6DB6A6-778D-4C24-82F4-260A3689D68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E6CB6FE-50E6-4C00-AF08-F387DD818C63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E6CB6FE-50E6-4C00-AF08-F387DD818C63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E6CB6FE-50E6-4C00-AF08-F387DD818C63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E6CB6FE-50E6-4C00-AF08-F387DD818C63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

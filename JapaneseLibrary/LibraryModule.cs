@@ -2,6 +2,8 @@
 using JapaneseLibrary.Models;
 using JapaneseLibrary.Repositories;
 using JapaneseLibrary.Services;
+using JapaneseLibrary.UseCases.User;
+using JapaneseLibrary.UseCases.Word;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +20,14 @@ namespace JapaneseLibrary
             services.AddScoped<IRepository<DefaultUser>, Repository<DefaultUser>>();
             services.AddScoped<IRepository<User>, Repository<User>>();
 
-            services.AddSingleton<WordProducer>();
+            services.AddScoped<WordProducer>();
+
+            services.AddScoped<GetUser>();
+            services.AddScoped<CreateUser>();
+            services.AddScoped<GetUsers>();
+
+            services.AddScoped<GetWords>();
+            services.AddScoped<CreateWord>();
 
             services.AddDbContext<MyLessonsContext>(
                 contextLifetime: ServiceLifetime.Scoped,

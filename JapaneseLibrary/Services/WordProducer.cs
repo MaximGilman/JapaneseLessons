@@ -3,19 +3,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using JapaneseLibrary.Models;
 using JapaneseLibrary.Repositories;
+using JapaneseLibrary.UseCases.Word;
 
 namespace JapaneseLibrary.Services
 {
     public class WordProducer
     {
-        private readonly IRepository<Word> _wordRepository;
+        private readonly GetWords _getWords;
 
         public delegate void RunIsOver();
         public event RunIsOver AllWordsWerePassed;
 
-        public WordProducer(IRepository<Word> wordRepository)
+        public WordProducer(GetWords getWords)
         {
-            _wordRepository = wordRepository;
+            _getWords = getWords;
         }
 
         private const int WordsAmount = 20;
@@ -25,7 +26,7 @@ namespace JapaneseLibrary.Services
         public async Task SetupWords()
         {
             // ToDo: Create lazy load for partition
-            var allWords = await _wordRepository.Get();
+            var allWords = await _getWords.Execute();
             if (!allWords.Any())
                 throw new KeyNotFoundException("No words found");
             words = allWords.Take(WordsAmount).ToList();

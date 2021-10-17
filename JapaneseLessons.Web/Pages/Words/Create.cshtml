@@ -1,0 +1,14 @@
+﻿@page
+@model JapaneseLessons.Web.Pages.Words.CreateModel
+@{
+    ViewData["Title"] = "Add new word";
+}
+<h2>@ViewData["Title"]</h2>
+<div asp-validation-summary="All"></div>
+<form method="POST">
+    <div><label>Text</label><br /><input asp-for="Word.Text" /></div>
+    <div><label>Meaning</label><br /><input asp-for="Word.Meaning" /></div>
+    <div><label>Hiragana</label><br /><input asp-for="Word.PronounceJapanese" /></div>
+    <div><label>Pronounce</label><br /><input asp-for="Word.PronounceRussian" /></div>
+    <input type="submit" value="Create" />
+</form>
