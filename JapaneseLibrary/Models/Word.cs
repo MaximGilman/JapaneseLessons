@@ -7,5 +7,6 @@
         public string Meaning { get; set; }
         public string PronounceRussian { get; set; }
         public string PronounceJapanese { get; set; }
+        public Lesson Lesson { get; set; }
     }
 }
