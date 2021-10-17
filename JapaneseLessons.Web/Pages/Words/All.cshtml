@@ -15,20 +15,24 @@
             <th>Pronounce</th>
             <th>Hiragana writing</th>
             <th>Lesson tag</th>
-
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var word in Model?.Words)
         {
-            <tr>
-                <td>@word.Text</td>
-                <td>@word.Meaning</td>
-                <td>@word.PronounceRussian</td>
-                <td>@word.PronounceJapanese</td>
-                <th>@word.Lesson?.Title</th>
-
-            </tr>
+        <tr>
+            <td>@word.Text</td>
+            <td>@word.Meaning</td>
+            <td>@word.PronounceRussian</td>
+            <td>@word.PronounceJapanese</td>
+            <th>@word.Lesson?.Title</th>
+            <th>
+                <form method="post">
+                <a asp-page="Edit" asp-route-id="@word.Id">Change</a>
+                </form>
+            </th>
+</tr>
         }
     </tbody>
 </table>

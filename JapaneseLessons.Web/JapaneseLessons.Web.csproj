@@ -9,4 +9,9 @@
     <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Exercise\" />
+    <Folder Include="Pages\Users\" />
+  </ItemGroup>
+
 </Project>

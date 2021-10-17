@@ -19,5 +19,10 @@ namespace JapaneseLibrary.UseCases.Word
         {
             return (await _wordsRepository.Get(expression)).Take(100);
         }
+
+        public async Task<Models.Word> Execute(int id)
+        {
+            return (await _wordsRepository.GetFirstOrDefault(x=>x.Id==id));
+        }
     }
 }

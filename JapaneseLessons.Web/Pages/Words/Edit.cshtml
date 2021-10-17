@@ -1,0 +1,42 @@
+﻿@page "{id:int}"
+@model JapaneseLessons.Web.Pages.Words.EditModel
+@{
+    ViewData["Title"] = "Edit word";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <input asp-for="Word.Id" type="hidden" />
+    <div>
+        <label>Text</label>
+        <div>
+            <input asp-for="Word.Text" />
+            <span asp-validation-for="Word.Text"></span>
+        </div>
+    </div>
+    <div>
+        <label>Hiragana</label>
+        <div>
+            <input asp-for="Word.PronounceJapanese" />
+            <span asp-validation-for="Word.PronounceJapanese"></span>
+        </div>
+    </div>
+    <div>
+        <label>Pronounce</label>
+        <div>
+            <input asp-for="Word.PronounceRussian" />
+            <span asp-validation-for="Word.PronounceRussian"></span>
+        </div>
+    </div>
+    <div>
+        <label>Meaning</label>
+        <div>
+            <input asp-for="Word.Meaning" />
+            <span asp-validation-for="Word.Meaning"></span>
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+</form>

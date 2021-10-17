@@ -28,6 +28,7 @@ namespace JapaneseLibrary
 
             services.AddScoped<GetWords>();
             services.AddScoped<CreateWord>();
+            services.AddScoped<EditWord>();
 
             services.AddDbContext<MyLessonsContext>(
                 contextLifetime: ServiceLifetime.Scoped,
